@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  
+  background-image: url("background_display.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: white;
+  
+}
+
+#overray{
+  
+ position: absolute;
+  background-color: rgba(0, 0, 0, 0.20);
+  top:0;
+  bottom:0;
+  height: 100%;
+  width: 100%;
+  z-index: -5;
+}

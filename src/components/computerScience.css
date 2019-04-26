@@ -1,0 +1,9 @@
+.list-group-item{
+    width:18%;
+    margin-left: 41%;
+}
+
+.list-group-item:hover{
+    background-color: #90A4AE;
+}
+

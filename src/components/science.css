@@ -1,0 +1,40 @@
+.content{
+    text-align: center;
+}
+.scienceHeader{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+#description{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+
+#departments{
+    text-align: center;
+    width: 18%;
+    font-size: 17px;
+    margin-left: 41%;
+    font-weight: bold;
+}
+
+@media screen and (max-width : 1500px){
+    
+        #departments{
+            width: 20%;
+            font-size: 12px;
+            margin-left: 40%;
+        }
+        
+    }
+
+@media screen and (max-width : 700px){
+
+    #departments{
+        width: 50%;
+        font-size: 12px;
+        margin-left: 25%;
+    }
+    
+}

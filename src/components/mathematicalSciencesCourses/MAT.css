@@ -1,0 +1,19 @@
+th{
+    background-color: #4CAF50;
+    color: white;
+}
+tr:hover{
+    background-color: #E0E0E0;
+    color: black;
+}
+
+.mainContent{
+    color: white;
+}
+.details{
+    text-align: center;
+}
+.displayTable{
+    width: 70%;
+    margin-left: 20%;
+}
