@@ -2,7 +2,7 @@
 var course_details = [
 
     {
-        "id": 0,
+
         "name": "operating systems",
         "code": "COM211",
         "credit_hours": 3,
@@ -26,17 +26,12 @@ var course_details = [
                 "edition": 4
             }
         ],
-        "pre_requisite": {
-            "name": "operating systems",
-            "code": "COM211",
-            "credit_hours": 3
-        },
 
     },
 
 
     {
-        "id": 1,
+
         "name": "advanced computer programming",
         "code": "COM221",
         "credit_hours": 3,
@@ -60,16 +55,12 @@ var course_details = [
                 "edition": 4
             }
         ],
-        "pre_requisite": {
-            "name": "operating systems",
-            "code": "COM211",
-            "credit_hours": 3
-        },
+
         "description": "The course aims at equiping students with the industrial knowledge to allow them survive the undestrial pressure"
     },
 
     {
-        "id": 2,
+
         "name": "CALCULS I",
         "code": "MAT211",
         "credit_hours": 3,
@@ -93,16 +84,12 @@ var course_details = [
                 "edition": 8
             }
         ],
-        "pre_requisite": {
-            "name": "calculus and trigonometry",
-            "code": "MAT121",
-            "credit_hours": 3
-        }
+
 
     },
 
     {
-        "id": 3,
+
         "name": "TRIGONOMETRY AND ELEMENTARY CALCULUS",
         "code": "MAT121",
         "credit_hours": 3,
@@ -126,17 +113,11 @@ var course_details = [
                 "edition": 4
             }
         ],
-        "pre_requisite": {
-            "name": "COLLEGE ALGEBRA",
-            "code": "MAT111",
-            "credit_hours": 3
-        },
 
         "description": "In this course students will grasp the fundamentals of calculus like differentiationand integration to preapre them for advanced courses in calculus"
 
     },
     {
-        "id": 4,
         "name": "ALECTRICITY AND MAGNETISM",
         "code": "PHY121",
         "credit_hours": 3,
@@ -160,11 +141,6 @@ var course_details = [
                 "edition": 9
             }
         ],
-        "pre_requisite": {
-            "name": "MECHANICS",
-            "code": "PHY111",
-            "credit_hours": 3
-        },
 
 
     }

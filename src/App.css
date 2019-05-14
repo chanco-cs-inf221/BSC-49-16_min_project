@@ -1,1 +1,121 @@
+/*AddCourse.jsx css*/
+.add{
+    min-width: 15%;
+    margin: 0 1% 1% 0;
+    padding: 0.5%;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.code_name{
+    margin-left: 21em;
+}
+.description_and_assessment
+{
+    min-width: 16%;
+    text-align: center;
+    padding: 1%;
+    border-radius: 4px;
+}
+.description{
+    border-radius: 4px;
+    min-width : 20%;
+    padding-bottom: 2%;
+}
+.labelName{
+    font-family : 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 1.5em;
+    
+}
+.work{
+    margin: 0  1% 1% 0;
+    padding: 0.2%;
+    margin-bottom: 1.5%;
+    border: 1px solid black;
+    border-radius: 4px;
 
+}
+.week{
+    margin: 0  1% 1% 0;
+    padding: 0.2%;
+    margin-bottom: 1.5%;
+    border: 1px solid black;
+    border-radius: 4px;
+
+}
+.btn{
+    width: 12%;
+    background-color: #D7D7D7;
+    color: black;
+}
+.btn:hover{
+    background-color: #546E7A;
+    color: white !important;
+}
+/*Home.jsx css*/
+.search{
+    width: 40%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: white;
+    background-image: url('./components/search.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+button{
+    height: 46px;
+    width: 80px;
+}
+button:hover{
+    background-color: #263238;
+    color: white;
+}
+button:active{
+    background-color: #009688;
+}
+
+#content{
+    position: absolute;
+    left: 0;
+    top: 16%;
+    width: 100%;
+    text-align: center;
+}
+.renderCourse{
+    position: absolute;
+    top: 34%;
+    width: 70%;
+    
+}
+p{  color: white;
+    font-family: Courier New, Courier, monospace;
+    font-size: 17px;
+   
+}
+@media screen and (max-width : 700px){
+
+    #content{
+        position: absolute;
+        left: 0;
+        top: 30%;
+        width: 100%;
+        text-align: center;
+    }
+    .renderCourse{
+        position: absolute;
+        top: 55%;
+        width: 90%;
+
+
+    }
+    p{
+        color: black;
+    }
+    .btn{
+        width: 25%;
+    }
+       
+}

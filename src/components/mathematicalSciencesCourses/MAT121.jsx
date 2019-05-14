@@ -39,8 +39,6 @@ const MAT121 = () => {
        
                 <h3>NAME : {name}</h3>
        
-                <h3>PRE-REQUISITE : {data[2].pre_requisite.name}</h3>
-       
                 <h3>CREDIT HOURS : {credit_hours} </h3>
        
                 <h3>RECOMENDED BOOKS</h3>

@@ -1,10 +1,11 @@
 import React from 'react';
 import './PHY.css'
-import data from '../../program_data';
+
 
 const PHY121 = () => {
 
-    const name = data[4].name
+    var data = JSON.parse(localStorage.data)
+    const name = data[4].name || " "
 
     const code = data[4].code
 

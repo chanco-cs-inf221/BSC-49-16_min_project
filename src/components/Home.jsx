@@ -1,11 +1,12 @@
 import React from 'react';
-import data from '../program_data'
-import './Home.css'
+import '../App.css'
 import COM211 from './computerCourses/COM211.jsx'
 import COM221 from './computerCourses/COM221.jsx'
 import MAT211 from './mathematicalSciencesCourses/MAT211.jsx'
 import MAT121 from './mathematicalSciencesCourses/MAT121.jsx'
 import PHY121 from './physicsCourses/PHY121.jsx'
+
+var data = JSON.parse(localStorage.data)
 
 class Home extends React.Component {
 
@@ -17,9 +18,12 @@ class Home extends React.Component {
         //to render different components
         this.state = {
 
-            course: null
+            course: null,
         }
+        localStorage.setItem("data", JSON.stringify(data))
+        console.log(JSON.parse(localStorage.data))
     }
+
 
     //creating a linear search algorithm bbased on course codes array created from program data
 
@@ -64,6 +68,7 @@ class Home extends React.Component {
 
     }
 
+
     render() {
 
         return (
@@ -76,18 +81,15 @@ class Home extends React.Component {
 
                     <form id="search_form">
 
-                        <input type="text" name="course" placeholder="Search course by code..." />
+                        <input type="text" name="course" placeholder="Search course by code..." className="search" />
 
                         <button onClick={this.findCourse} name="search">Search</button>
-
                     </form>
-
 
 
                 </div>
 
                 <div className="renderCourse">
-
                     <hr />
 
                     {/*conditional rendering*/}

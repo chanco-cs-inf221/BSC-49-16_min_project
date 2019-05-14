@@ -20,3 +20,21 @@ body {
   width: 100%;
   z-index: -5;
 }
+
+@media screen and (max-width: 850px) {
+  body{
+    background-image: none;
+    color : black !important;
+  }
+  #overray{
+    
+   position: absolute;
+    background-color:white;
+    top:0;
+    bottom:0;
+    height: 100%;
+    width: 100%;
+    z-index: -5;
+  }
+  
+}

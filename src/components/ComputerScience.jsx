@@ -4,6 +4,8 @@ import COM211 from './computerCourses/COM211.jsx';
 import COM221 from './computerCourses/COM221.jsx';
 import './computerScience.css'
 
+
+let courses = JSON.parse(localStorage.course);
 class ComputerScince extends React.Component {
 
     render() {
@@ -20,7 +22,9 @@ class ComputerScince extends React.Component {
 
                 </ul>
 
-                <div id="voidDisp"></div>
+                <div className="voidDisp" onClick={prepareCourse}>
+                    {takeCourse()}
+                </div>
 
                 <div id="displayCourse"></div>
 
@@ -40,5 +44,29 @@ const dispCOM221 = () => {
 const dispCOM211 = () => {
 
     ReactDOM.render(<COM211 />, document.getElementById("displayCourse"))
+}
+
+const takeCourse = () => {
+    let comCourses = []
+    for (var i = 0; i < courses.length; i++) {
+        if ((courses[i].code).includes("COM")) {
+            comCourses.push(courses[i].code)
+        }
+    }
+
+    return comCourses.map(name => {
+        return (
+            <div key={name}>
+                <ul>
+                    <li>{name}</li>
+                </ul>
+            </div>)
+    })
+
+}
+const prepareCourse = () => {
+    const [{assessment_schedule}] = courses
+    console.log(assessment_schedule)
+
 }
 export default ComputerScince
