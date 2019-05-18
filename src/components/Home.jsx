@@ -1,12 +1,7 @@
 import React from 'react';
 import '../App.css'
-import COM211 from './computerCourses/COM211.jsx'
-import COM221 from './computerCourses/COM221.jsx'
-import MAT211 from './mathematicalSciencesCourses/MAT211.jsx'
-import MAT121 from './mathematicalSciencesCourses/MAT121.jsx'
-import PHY121 from './physicsCourses/PHY121.jsx'
 
-var data = JSON.parse(localStorage.data)
+
 
 class Home extends React.Component {
 
@@ -20,8 +15,7 @@ class Home extends React.Component {
 
             course: null,
         }
-        localStorage.setItem("data", JSON.stringify(data))
-        console.log(JSON.parse(localStorage.data))
+
     }
 
 
@@ -30,42 +24,48 @@ class Home extends React.Component {
     findCourse = (event) => {
 
         event.preventDefault();
+        if (localStorage.course) {
+            let data = JSON.parse(localStorage.course)
 
-        let searched_course = document.getElementById("search_form").course.value.toUpperCase()
+            let searched_course = document.getElementById("search_form").course.value.toUpperCase()
 
-        const courses = []
+            const courses = []
 
-        for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < data.length; i++) {
 
-            //creating an array of course codes from JSON data  
+                //creating an array of course codes from JSON data  
 
-            courses.push(data[i].code)
+                courses.push(data[i].code)
+
+            }
+            console.log(courses)
+
+            //search for course index in the array and eventually using that index to retrive the course
+            //and set it to the course state
+
+            const search = courses.indexOf(searched_course)
+
+            if (search !== -1) {
+
+                this.setState({
+
+                    course: courses[search]
+
+                });
+
+            }
+
+            else {
+
+                //if the course is not in the list, alert the user that the course is not among the list
+
+                alert("COURSE NOT FOUND, CHECK THE CODE !!!")
+            }
 
         }
-
-        //search for course index in the array and eventually using that index to retrive the course
-        //and set it to the course state
-
-        const search = courses.indexOf(searched_course)
-
-        if (search !== -1) {
-
-            this.setState({
-
-                course: courses[search]
-
-            });
-
-        }
-
         else {
-
-            //if the course is not in the list, alert the user that the course is not among the list
-
-            alert("COURSE NOT FOUND, CHECK THE CODE !!!")
+            alert("There are no courses currently. Add courses in admin section")
         }
-
-
     }
 
 
@@ -92,17 +92,10 @@ class Home extends React.Component {
                 <div className="renderCourse">
                     <hr />
 
-                    {/*conditional rendering*/}
+                    {/*conditional rendering
 
                     {(this.state.course === "COM211" && this.state.course !== null) && <COM211 />}
-
-                    {(this.state.course === "COM221" && this.state.course !== null) && <COM221 />}
-
-                    {(this.state.course === "MAT211" && this.state.course !== null) && <MAT211 />}
-
-                    {(this.state.course === "MAT121" && this.state.course !== null) && <MAT121 />}
-
-                    {(this.state.course === "PHY121" && this.state.course !== null) && <PHY121 />}
+                    */}
 
                 </div>
 

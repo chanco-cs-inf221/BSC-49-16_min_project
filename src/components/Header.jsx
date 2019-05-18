@@ -15,8 +15,9 @@ class Header extends React.Component {
                     {/*creating links in the navigation bar to render different components on the same page*/}
 
                     <a href="/" className="linksWebName"><img src={"images/school.png"} alt="" />COURSEs BROCHURE</a>
-
-                    <NavLink to="/" className="links" alt="">HOME</NavLink>
+                    <NavLink to="/Admin" className="links" title="add courses" >ADMIN</NavLink>
+                    
+                    <NavLink to="/" className="links" >HOME</NavLink>
 
                     <NavLink to="/faculty" className="links">EXPLORE BY FACULTY </NavLink>
 

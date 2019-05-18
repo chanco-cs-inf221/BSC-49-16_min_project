@@ -1,72 +1,125 @@
+
 import React from 'react'
-import ReactDOM from 'react-dom'
-import COM211 from './computerCourses/COM211.jsx';
-import COM221 from './computerCourses/COM221.jsx';
 import './computerScience.css'
 
 
-let courses = JSON.parse(localStorage.course);
+
 class ComputerScince extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            courseDetails: ' ',
+
+        }
+    }
+
+
     render() {
+        let course = this.state.courseDetails;
+        let week1 = this.state.week1;
+        let week2 = this.state.week2;
+        let week3 = this.state.week3;
+        let week4 = this.state.week4;
+        let week5 = this.state.week5;
+
 
         return (
 
             <div>
+                <ul> {this.takeCourse()}</ul>
 
-                <ul className="list-group">
 
-                    <li className="list-group-item" onClick={dispCOM211}>COM211</li>
+                <div id="displayCourse">
 
-                    <li className="list-group-item" onClick={dispCOM221}>COM221</li>
+                    <h3>CODE : {course.code}</h3>
 
-                </ul>
+                    <h3>NAME : {course.name}</h3>
 
-                <div className="voidDisp" onClick={prepareCourse}>
-                    {takeCourse()}
+                    <h3>CREDIT HOURS : {course.credit_hours} </h3>
+                    <h3> DESCRIPTION : {course.description}</h3>
+
+                    <h3>ASSESSMENT SCHEDULE : </h3>
+                    <table className="table" >
+                        <tbody>
+                            <tr>
+                                <th> ASSIGNMENT</th>
+                            </tr>
+                            <tr>
+                                <td>{week1}</td>
+                            </tr>
+                            <tr>
+                                <td>{week2}</td>
+                            </tr>
+                            <tr>
+                                <td>{week3}</td>
+                            </tr>
+                            <tr>
+                                <td>{week4}</td>
+                            </tr>
+                            <tr>
+                                <td>{week5}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
-
-                <div id="displayCourse"></div>
 
             </div>
 
         );
 
     }
-}
 
+    takeCourse = () => {
+        if (localStorage.course) {
 
+            let courseObject = JSON.parse(localStorage.course)
 
-const dispCOM221 = () => {
+            let courses = courseObject
+            let comCourses = []
+            for (var i = 0; i < courses.length; i++) {
+                if ((courses[i].code).includes("COM")) {
+                    comCourses.push(courses[i].code)
+                }
+            }
 
-    ReactDOM.render(<COM221 />, document.getElementById("displayCourse"))
-}
-const dispCOM211 = () => {
+            return comCourses.map(name => {
+                return (
+                    <li key={name} id={name} onClick={(event) => this.prepareCourse(event)}>{name}</li>
+                )
+            })
 
-    ReactDOM.render(<COM211 />, document.getElementById("displayCourse"))
-}
-
-const takeCourse = () => {
-    let comCourses = []
-    for (var i = 0; i < courses.length; i++) {
-        if ((courses[i].code).includes("COM")) {
-            comCourses.push(courses[i].code)
         }
+
+    }
+    prepareCourse = (event) => {
+
+        let courses = JSON.parse(localStorage.course)
+
+        const courseCode = event.target.id;
+
+        let course;
+        for (let i = 0; i < courses.length; i++) {
+            if ((courses[i].code) === (courseCode))
+                course = courses[i]
+        }
+        this.setState({
+            courseDetails: course,
+            week1: course.assessment_schedule.week1,
+            week2: course.assessment_schedule.week2,
+            week3: course.assessment_schedule.week3,
+            week4: course.assessment_schedule.week4,
+            week5: course.assessment_schedule.week5,
+
+        })
     }
 
-    return comCourses.map(name => {
-        return (
-            <div key={name}>
-                <ul>
-                    <li>{name}</li>
-                </ul>
-            </div>)
-    })
-
+    optionsModal = ()=>{
+        
+    }
 }
-const prepareCourse = () => {
-    const [{assessment_schedule}] = courses
-    console.log(assessment_schedule)
 
-}
+
+
 export default ComputerScince

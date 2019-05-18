@@ -1,40 +1,113 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import MAT211 from './mathematicalSciencesCourses/MAT211.jsx'
-import MAT121 from './mathematicalSciencesCourses/MAT121.jsx'
+
 
 class MathemeticalSciences extends Component {
-   
+    constructor(props) {
+        super(props)
+        this.state = {
+            courseDetails: ' ',
+
+        }
+    }
+
+
     render() {
-   
+        let course = this.state.courseDetails;
+        let week1 = this.state.week1;
+        let week2 = this.state.week2;
+        let week3 = this.state.week3;
+        let week4 = this.state.week4;
+        let week5 = this.state.week5;
+
         return (
-   
             <div>
-            
-                <ul className="list-group">
+                <ul>{this.takeCourse()}</ul>
 
-                    {/*rendering components after on click*/}
 
-                    <li className="list-group-item" onClick={dispMAT211}>MAT211</li>
-            
-                    <li className="list-group-item" onClick={dispMAT121}>MAT121</li>
-            
-                </ul>
-            
-                <div id="displayCourse"></div>
-            
+                <div id="displayCourse">
+
+                    <h3>CODE : {course.code}</h3>
+
+                    <h3>NAME : {course.name}</h3>
+
+                    <h3>CREDIT HOURS : {course.credit_hours} </h3>
+                    <h3> DESCRIPTION : {course.description}</h3>
+
+                    <h3>ASSESSMENT SCHEDULE : </h3>
+                    <table className="table" >
+                        <tbody>
+                            <tr>
+                                <th> ASSIGNMENT</th>
+                            </tr>
+                            <tr>
+                                <td>{week1}</td>
+                            </tr>
+                            <tr>
+                                <td>{week2}</td>
+                            </tr>
+                            <tr>
+                                <td>{week3}</td>
+                            </tr>
+                            <tr>
+                                <td>{week4}</td>
+                            </tr>
+                            <tr>
+                                <td>{week5}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+
             </div>
         );
+    }
+
+
+    takeCourse = () => {
+        if (localStorage.course) {
+            let courseObject = JSON.parse(localStorage.course)
+            let courses = courseObject
+            let matCourses = []
+            for (var i = 0; i < courses.length; i++) {
+                if ((courses[i].code).includes("MAT")) {
+                    matCourses.push(courses[i].code)
+                }
+            }
+
+            return matCourses.map(name => {
+                return (
+                    <li key={name} id={name} onClick={(event) => this.prepareCourse(event)}>{name}</li>
+                )
+            })
+
+        }
+    }
+    prepareCourse = (event) => {
+        let courses = JSON.parse(localStorage.course)
+
+        const courseCode = event.target.id;
+        let course;
+        for (let i = 0; i < courses.length; i++) {
+            if ((courses[i].code) === (courseCode))
+                course = courses[i]
+        }
+
+
+        this.setState({
+            courseDetails: course,
+            week1: course.assessment_schedule.week1,
+            week2: course.assessment_schedule.week2,
+            week3: course.assessment_schedule.week3,
+            week4: course.assessment_schedule.week4,
+            week5: course.assessment_schedule.week5,
+
+        })
     }
 }
 
 
 
-const dispMAT211 = () => {
-    ReactDOM.render(<MAT211 />, document.getElementById("displayCourse"))
-}
-
-const dispMAT121 = () => {
-    ReactDOM.render(<MAT121 />, document.getElementById("displayCourse"))
-}
 export default MathemeticalSciences

@@ -1,30 +1,112 @@
 import React, { Fragment } from 'react'
-import ReactDOM from 'react-dom'
-import PHY121 from './physicsCourses/PHY121.jsx'
 
 
-const Physics = () => {
-    
-    return (
-    
-    <Fragment>
-    
-            <ul className="list-group">
-    
-                <li className="list-group-item" onClick={dispPHY121}>PHY121</li>
-    
-            </ul>
-    
-            <div id="displayCourse"></div>
-    
-        </Fragment>
-    
-    );
 
+class Physics extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            courseDetails: '',
+
+        }
+    }
+
+    render() {
+
+        let course = this.state.courseDetails;
+        let week1 = this.state.week1;
+        let week2 = this.state.week2;
+        let week3 = this.state.week3;
+        let week4 = this.state.week4;
+        let week5 = this.state.week5;
+        return (
+
+            <Fragment>
+                <ul>{this.takeCourse()}</ul>
+
+                <div id="displayCourse">
+
+                    <h3>CODE : {course.code}</h3>
+
+                    <h3>NAME : {course.name}</h3>
+
+                    <h3>CREDIT HOURS : {course.credit_hours} </h3>
+                    <h3> DESCRIPTION : {course.description}</h3>
+
+                    <h3>ASSESSMENT SCHEDULE : </h3>
+                    <table className="table" >
+                        <tbody>
+                            <tr>
+                                <th> ASSIGNMENT</th>
+                            </tr>
+                            <tr>
+                                <td>{week1}</td>
+                            </tr>
+                            <tr>
+                                <td>{week2}</td>
+                            </tr>
+                            <tr>
+                                <td>{week3}</td>
+                            </tr>
+                            <tr>
+                                <td>{week4}</td>
+                            </tr>
+                            <tr>
+                                <td>{week5}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </Fragment>
+
+        );
+    }
+
+
+    takeCourse = () => {
+        if (localStorage.course) {
+            let courseObject = JSON.parse(localStorage.course)
+            let courses = courseObject
+            let phyCourses = []
+            for (var i = 0; i < courses.length; i++) {
+                if ((courses[i].code).includes("PHY")) {
+                    phyCourses.push(courses[i].code)
+                }
+            }
+
+            return phyCourses.map(name => {
+                return (
+                    <li key={name} id={name} onClick={(event) => this.prepareCourse(event)}>{name}</li>
+                )
+            })
+
+        }
+    }
+    prepareCourse = (event) => {
+        let courses = JSON.parse(localStorage.course)
+
+        const courseCode = event.target.id;
+        let course;
+        for (let i = 0; i < courses.length; i++) {
+            if ((courses[i].code) === (courseCode))
+                course = courses[i]
+        }
+
+
+        this.setState({
+            courseDetails: course,
+            week1: course.assessment_schedule.week1,
+            week2: course.assessment_schedule.week2,
+            week3: course.assessment_schedule.week3,
+            week4: course.assessment_schedule.week4,
+            week5: course.assessment_schedule.week5,
+
+        })
+    }
 }
 
-const dispPHY121 = () => {
-    ReactDOM.render(<PHY121 />, document.getElementById("displayCourse"))
-}
 
 export default Physics

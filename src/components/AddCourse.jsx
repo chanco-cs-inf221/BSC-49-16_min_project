@@ -16,7 +16,7 @@ const AddCourse = () => {
                 </div>
                 <div className="description_and_assessment">
                     <span className="desc_assessment">Desciption:</span><br />
-                    <textarea type="text" name="description" className="description" placeholder="description of the course.." required /><br />
+                    <textarea type="text" name="description" className="description" placeholder="description of the course.." /><br />
                     <div className="desc_assessment">Assessment schedule</div>
                     <div className="assesment_weeks">
                         <span className="labelName">week number : </span>
@@ -50,8 +50,8 @@ const AddCourse = () => {
 }
 const add = () => {
     let form = document.getElementById("addCourse");
-    let name = form.name.value;
-    let code = form.code.value;
+    let name = form.name.value.toUpperCase();
+    let code = form.code.value.toUpperCase();
 
     //get inputs from week details
     let weekInput1 = form.input1Week.value;
@@ -61,13 +61,13 @@ const add = () => {
     let weekInput5 = form.input5Week.value;
 
     //get inputs for work details
-    let workInput1 = form.input1Work.value
-    let workInput2 = form.input2Work.value
-    let workInput3 = form.input3Work.value
-    let workInput4 = form.input4Work.value
-    let workInput5 = form.input5Work.value
+    let workInput1 = form.input1Work.value.toUpperCase()
+    let workInput2 = form.input2Work.value.toUpperCase()
+    let workInput3 = form.input3Work.value.toUpperCase()
+    let workInput4 = form.input4Work.value.toUpperCase()
+    let workInput5 = form.input5Work.value.toUpperCase()
     let credit_hours = form.credit_hours.value;
-    let description = form.description.value;
+    let description = form.description.value.toUpperCase();
     var course = {
         name: name,
         code: code,
@@ -110,7 +110,6 @@ const add = () => {
         return
     }
     localStorage.setItem("course", JSON.stringify(courses));
-    console.log(courses)
     form.reset();
 }
 export default AddCourse
