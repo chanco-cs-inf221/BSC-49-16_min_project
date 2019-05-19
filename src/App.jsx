@@ -25,7 +25,10 @@ class App extends React.Component {
 
           <Header />
 
+
           <Switch>
+
+
 
             <Route path="/" component={Home} exact />
 

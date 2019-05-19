@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css'
 
 
 
@@ -13,7 +12,7 @@ class Home extends React.Component {
         //to render different components
         this.state = {
 
-            course: null,
+            SinglecourseObj: " ",
         }
 
     }
@@ -24,37 +23,48 @@ class Home extends React.Component {
     findCourse = (event) => {
 
         event.preventDefault();
+
+        let fullCourse
+
         if (localStorage.course) {
-            let data = JSON.parse(localStorage.course)
+
+            let courseObject = JSON.parse(localStorage.course)
 
             let searched_course = document.getElementById("search_form").course.value.toUpperCase()
 
-            const courses = []
+            const courses = courseObject.map(course => {
 
-            for (var i = 0; i < data.length; i++) {
+                return course.code
 
-                //creating an array of course codes from JSON data  
-
-                courses.push(data[i].code)
-
-            }
-            console.log(courses)
-
+            })
             //search for course index in the array and eventually using that index to retrive the course
             //and set it to the course state
 
             const search = courses.indexOf(searched_course)
 
+
             if (search !== -1) {
 
-                this.setState({
+                const course = courses[search]
 
-                    course: courses[search]
+                for (let i = 0; i < courseObject.length; i++) {
 
-                });
+                    if (course === courseObject[i].code) {
 
+                        fullCourse = courseObject[i]
+
+                        this.setState({
+                            SinglecourseObj: fullCourse,
+                            week1: fullCourse.assessment_schedule.week1,
+                            week2: fullCourse.assessment_schedule.week2,
+                            week3: fullCourse.assessment_schedule.week3,
+                            week4: fullCourse.assessment_schedule.week4,
+                            week5: fullCourse.assessment_schedule.week5,
+                        })
+
+                    }
+                }
             }
-
             else {
 
                 //if the course is not in the list, alert the user that the course is not among the list
@@ -64,12 +74,70 @@ class Home extends React.Component {
 
         }
         else {
+
             alert("There are no courses currently. Add courses in admin section")
+
         }
     }
 
+    displayCourse = () => {
+        let course = this.state.SinglecourseObj;
+        let week1 = this.state.week1
+        let week2 = this.state.week2
+        let week3 = this.state.week3
+        let week4 = this.state.week4
+        let week5 = this.state.week5
+
+        return (
+
+            <div>
+                <h3>CODE : {course.code}</h3>
+
+                <h3>NAME : {course.name}</h3>
+
+                <h3>CREDIT HOURS : {course.credit_hours}</h3>
+
+                <h3>DESCRIPTION : {course.description}</h3>
+
+                <table className="table" >
+
+                    <tbody>
+
+                        <tr>
+                            <th> WORK DETAILS</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>{week1}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>{week2}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>{week3}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>{week4}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>{week5}</td>
+                        </tr>
+                   
+                    </tbody>
+                
+                </table>
+
+
+            </div>)
+    }
 
     render() {
+
+
 
         return (
 
@@ -77,13 +145,13 @@ class Home extends React.Component {
 
                 <div id="content">
 
-                    <p>Welcome to chanco courses<br /> brochure. You can search the course directly to see its details or choose to explore by falcuties or dive in the previleged science department on the navigation bar </p>
+                    <p className = "homeDescription">Welcome to chanco courses<br /> brochure. You can search the course directly to see its details or choose to explore by falcuties or dive in the previleged science department on the navigation bar </p>
 
                     <form id="search_form">
 
                         <input type="text" name="course" placeholder="Search course by code..." className="search" />
 
-                        <button onClick={this.findCourse} name="search">Search</button>
+                        <button onClick={this.findCourse} className ="seachButton" name="search">Search</button>
                     </form>
 
 
@@ -92,11 +160,7 @@ class Home extends React.Component {
                 <div className="renderCourse">
                     <hr />
 
-                    {/*conditional rendering
-
-                    {(this.state.course === "COM211" && this.state.course !== null) && <COM211 />}
-                    */}
-
+                    {this.displayCourse()}
                 </div>
 
                 {/*create a modal to display the app information*/}

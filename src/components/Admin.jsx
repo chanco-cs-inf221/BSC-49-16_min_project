@@ -7,8 +7,8 @@ class Admin extends Component {
     render() {
         return (
             <div>
-                <NavLink to="/Admin/add" className="links">ADD COURSE</NavLink>
-                <NavLink to="/Admin/delete" className="links">DELETE COURSE</NavLink>
+                <NavLink to="/Admin/add" className="adminLinkDel">ADD COURSE</NavLink>
+                <NavLink to="/Admin/delete" className="adminLinkAdd">DELETE COURSE</NavLink>
             </div>
         )
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-import './Falcuties.css'
 
 export default class Falcuties extends Component {
   render() {

@@ -2,7 +2,7 @@ import React from 'react';
 import ComputerScince from './ComputerScience.jsx'
 import MathematicalSciences from './MathematicalSciences.jsx'
 import Physics from './Physics'
-import './science.css'
+
 
 
 class Science extends React.Component {
@@ -46,7 +46,7 @@ class Science extends React.Component {
 
           <div className="scienceHeader">FALCUTY OF SCIENCE</div>
 
-          <div id="description">select a department in<br /> the drop down list below<br />to show courses in the department. <br />Click on the course to show details about it</div>
+          <div id="scinceDesc">select a department in<br /> the drop down list below<br />to show courses in the department. <br />Click on the course to show details about it</div>
 
           <select id="departments" className="form-control" onChange={this.handleOnChange}>
 

@@ -20,44 +20,60 @@ class MathemeticalSciences extends Component {
         let week5 = this.state.week5;
 
         return (
+
             <div>
-                <ul>{this.takeCourse()}</ul>
+            
+                <h3 className="comCoursesHeader">COURSES</h3>
+            
+                <div className="title">
+            
+                    <ul>{this.takeCourse()}</ul>
 
+                    <div id="displayCourse">
 
-                <div id="displayCourse">
+                        <h3>CODE : {course.code}</h3>
 
-                    <h3>CODE : {course.code}</h3>
+                        <h3>NAME : {course.name}</h3>
 
-                    <h3>NAME : {course.name}</h3>
+                        <h3>CREDIT HOURS : {course.credit_hours} </h3>
 
-                    <h3>CREDIT HOURS : {course.credit_hours} </h3>
-                    <h3> DESCRIPTION : {course.description}</h3>
+                        <h3 className="courseDescription"> DESCRIPTION : {course.description}</h3>
 
-                    <h3>ASSESSMENT SCHEDULE : </h3>
-                    <table className="table" >
-                        <tbody>
-                            <tr>
-                                <th> ASSIGNMENT</th>
-                            </tr>
-                            <tr>
-                                <td>{week1}</td>
-                            </tr>
-                            <tr>
-                                <td>{week2}</td>
-                            </tr>
-                            <tr>
-                                <td>{week3}</td>
-                            </tr>
-                            <tr>
-                                <td>{week4}</td>
-                            </tr>
-                            <tr>
-                                <td>{week5}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <h3>ASSESSMENT SCHEDULE : </h3>
 
+                        <table className="table" >
 
+                            <tbody>
+
+                                <tr>
+                                    <th>WORK DETAILS</th>
+                                </tr>
+
+                                <tr>
+                                    <td>{week1}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week2}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week3}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week4}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week5}</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
 
@@ -67,34 +83,47 @@ class MathemeticalSciences extends Component {
 
 
     takeCourse = () => {
+
         if (localStorage.course) {
+
             let courseObject = JSON.parse(localStorage.course)
+
             let courses = courseObject
+
             let matCourses = []
+
             for (var i = 0; i < courses.length; i++) {
+
                 if ((courses[i].code).includes("MAT")) {
+
                     matCourses.push(courses[i].code)
                 }
             }
 
             return matCourses.map(name => {
+
                 return (
-                    <li key={name} id={name} onClick={(event) => this.prepareCourse(event)}>{name}</li>
+
+                    <li key={name} id={name} className="courses" onClick={(event) => this.prepareCourse(event)}>{name}</li>
                 )
             })
 
         }
     }
     prepareCourse = (event) => {
+
         let courses = JSON.parse(localStorage.course)
 
         const courseCode = event.target.id;
+
         let course;
+
         for (let i = 0; i < courses.length; i++) {
+
             if ((courses[i].code) === (courseCode))
+
                 course = courses[i]
         }
-
 
         this.setState({
             courseDetails: course,

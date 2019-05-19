@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import './Header.css'
+
 
 class Header extends React.Component {
 
@@ -15,13 +15,14 @@ class Header extends React.Component {
                     {/*creating links in the navigation bar to render different components on the same page*/}
 
                     <a href="/" className="linksWebName"><img src={"images/school.png"} alt="" />COURSEs BROCHURE</a>
-                    <NavLink to="/Admin" className="links" title="add courses" >ADMIN</NavLink>
-                    
-                    <NavLink to="/" className="links" >HOME</NavLink>
 
-                    <NavLink to="/faculty" className="links">EXPLORE BY FACULTY </NavLink>
+                    <NavLink to="/Admin" className="links" title="add or delete  courses" >ADMIN</NavLink>
 
-                    <NavLink to="/Falcuty/Sciences" className="links">EXPLORE SCIENCE COURSES </NavLink>
+                    <NavLink to="/" className="links" title="Home Page">HOME</NavLink>
+
+                    <NavLink to="/faculty" className="links" title="Falcuties">EXPLORE BY FACULTY </NavLink>
+
+                    <NavLink to="/Falcuty/Sciences" className="links" title="science courses">EXPLORE SCIENCE COURSES </NavLink>
 
                 </div>
 

@@ -20,43 +20,62 @@ class Physics extends React.Component {
         let week3 = this.state.week3;
         let week4 = this.state.week4;
         let week5 = this.state.week5;
+
         return (
 
             <Fragment>
-                <ul>{this.takeCourse()}</ul>
 
-                <div id="displayCourse">
+                <h3 className="comCoursesHeader">COURSES</h3>
 
-                    <h3>CODE : {course.code}</h3>
+                <div className="title">
 
-                    <h3>NAME : {course.name}</h3>
+                    <ul className="courseList">{this.takeCourse()}</ul>
 
-                    <h3>CREDIT HOURS : {course.credit_hours} </h3>
-                    <h3> DESCRIPTION : {course.description}</h3>
+                    <div id="displayCourse">
 
-                    <h3>ASSESSMENT SCHEDULE : </h3>
-                    <table className="table" >
-                        <tbody>
-                            <tr>
-                                <th> ASSIGNMENT</th>
-                            </tr>
-                            <tr>
-                                <td>{week1}</td>
-                            </tr>
-                            <tr>
-                                <td>{week2}</td>
-                            </tr>
-                            <tr>
-                                <td>{week3}</td>
-                            </tr>
-                            <tr>
-                                <td>{week4}</td>
-                            </tr>
-                            <tr>
-                                <td>{week5}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <h3>CODE : {course.code}</h3>
+
+                        <h3>NAME : {course.name}</h3>
+
+                        <h3>CREDIT HOURS : {course.credit_hours} </h3>
+
+                        <h3 className="courseDescription"> DESCRIPTION : {course.description}</h3>
+
+                        <h3>ASSESSMENT SCHEDULE : </h3>
+
+                        <table className="table" >
+
+                            <tbody>
+
+                                <tr>
+                                    <th>WORK DETAILS</th>
+                                </tr>
+
+                                <tr>
+                                    <td>{week1}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week2}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week3}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week4}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>{week5}</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
 
@@ -79,7 +98,7 @@ class Physics extends React.Component {
 
             return phyCourses.map(name => {
                 return (
-                    <li key={name} id={name} onClick={(event) => this.prepareCourse(event)}>{name}</li>
+                    <li key={name} id={name} className="courses" onClick={(event) => this.prepareCourse(event)}>{name}</li>
                 )
             })
 
